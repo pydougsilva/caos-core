@@ -1,0 +1,135 @@
+# RAG Index — C.A.O.S Core
+versao: 4.0
+
+---
+
+# REGRA PRINCIPAL
+
+Carregar apenas módulos necessários.
+Nunca carregar o RAG inteiro.
+Máximo recomendado: 3 módulos por tarefa.
+
+---
+
+# ORDEM DE CARREGAMENTO
+
+```
+Etapa 0   → Detectar gatilho (r-auto-recuperacao-contextual)
+Etapa 0a  → Matching por conceito (r-matching-conceito + k-sys-registry-dominios)
+Etapa 0b  → Recuperar snapshot (r-recuperacao-contextual)
+Etapa 1   → /r  (regras — antes de /k)
+Etapa 2   → /k  (conhecimento)
+```
+
+---
+
+# FALLBACK
+
+| Módulo ausente | Comportamento |
+|---|---|
+| r-matching-conceito | matching heurístico (r-auto-recuperacao-contextual) |
+| r-handoff-codex | instrução textual informal |
+| r-estados-ciclo | sem rastreamento formal |
+| r-git-operacional | sem verificação de diff |
+
+---
+
+# TAREFA → MÓDULOS
+
+| Tarefa | Arquivo 1 | Arquivo 2 | Arquivo 3 |
+|---|---|---|---|
+| Script SQL | r/r-sql-idiomatico | k/banco/[tabelas] | r/r-rls-padrao |
+| Policy RLS | r/r-rls-padrao | k/banco/[funcoes] | — |
+| Hotfix frontend | r/r-hotfix-padrao | k/frontend/[componente] | — |
+| Domínio com histórico | r/r-recuperacao-contextual | — | — |
+| Handoff estruturado | r/r-handoff-codex | k/sistema/k-sys-handoff-format | r/r-estados-ciclo |
+| Retomada de ciclo | r/r-estados-ciclo | r/r-recuperacao-contextual | — |
+| Matching de domínio | r/r-matching-conceito | k/sistema/k-sys-registry-dominios | — |
+| Snapshot incremental | r/r-snapshots-incrementais | r/r-recuperacao-contextual | — |
+| Commit institucional | r/r-commit-governance | k/sistema/k-sys-governanca-git | r/r-git-operacional |
+| Rollback de ciclo | r/r-rollback-contextual | r/r-estados-ciclo | — |
+| Replay de ciclo | r/r-replay-operacional | r/r-recuperacao-contextual | — |
+| Auditoria Git | r/r-git-operacional | k/sistema/k-sys-persistencia-operacional | — |
+| Entrada novo agente | k/sistema/k-sys-handoff-institucional | r/r-staleness-detection | r/r-telemetria-cognitiva |
+| Bootstrap projeto | k/projeto/k-bootstrap-caos | k/sistema/k-sys-nucleo-minimo | — |
+| Anti-burocracia | r/r-anti-burocracia | r/r-module-pruning | — |
+
+---
+
+# MÓDULOS EXISTENTES
+
+## /r — Regras Operacionais
+
+| Arquivo | Versão | Finalidade |
+|---|---|---|
+| r-sql-idiomatico | 1.0 | regras para migrations SQL idempotentes |
+| r-rls-padrao | 1.0 | isolamento multi-tenant via RLS |
+| r-hotfix-padrao | 1.0 | patches cirúrgicos sem reescrever arquivo completo |
+| r-orquestracao-caos | v1.1 | comportamento do orquestrador Claude |
+| r-atualizacao-rag | v1.1 | quando e como evoluir o RAG |
+| r-recuperacao-contextual | 1.1 | snapshots históricos entre sessões |
+| r-auto-recuperacao-contextual | 1.0 | detecção automática de domínios |
+| r-estados-ciclo | 2.0 | estados formais — COMMITADO/VERIFICADO/DIVERGENTE |
+| r-handoff-codex | 2.0 | protocolo handoff Claude→Codex |
+| r-matching-conceito | 1.0 | matching por score ponderado de aliases |
+| r-snapshots-incrementais | 1.0 | cadeia de deltas sobre snapshot base |
+| r-git-operacional | 1.0 | leitura Git + detecção de drift |
+| r-commit-governance | 1.0 | commits institucionais |
+| r-rollback-contextual | 1.0 | rollback técnico + institucional |
+| r-replay-operacional | 1.0 | replay assistido de ciclos |
+| r-staleness-detection | 1.0 | detecção de artefatos desatualizados |
+| r-module-pruning | 1.0 | arquivamento e simplificação de módulos |
+| r-concurrency-guard | 1.0 | prevenção de colisão entre ciclos |
+| r-telemetria-cognitiva | 1.0 | registro mínimo de sessão |
+| r-anti-burocracia | 1.0 | limites contra hipercomplexidade |
+
+---
+
+## /k/sistema — Conhecimento do Sistema
+
+| Arquivo | Versão | Finalidade |
+|---|---|---|
+| k-sys-registry-dominios | 1.0 | catálogo de domínios (PREENCHER por projeto) |
+| k-sys-handoff-format | 1.0 | estrutura dos documentos handoff e retorno |
+| k-sys-persistencia-operacional | 1.0 | camada Git no C.A.O.S |
+| k-sys-governanca-git | 1.0 | branches, commits e convenções |
+| k-sys-handoff-institucional | 1.0 | protocolo de entrada para novo agente |
+| k-sys-nucleo-minimo | 1.0 | núcleo mínimo replicável |
+
+---
+
+## /k/projeto — Metodologia
+
+| Arquivo | Versão | Finalidade |
+|---|---|---|
+| k-bootstrap-caos | 1.0 | guia de inicialização (3 perfis de projeto) |
+
+---
+
+# EVOLUÇÃO ARQUITETURAL
+
+| Versão | Marco |
+|---|---|
+| v2.x | snapshots + auto-recuperação |
+| v3.0 | continuidade entre agentes (registry, handoff, estados) |
+| v3.5 | persistência verificável (Git) |
+| v3.9 | hardening (staleness, pruning, concurrency, telemetria) |
+| v4.0 | replicabilidade institucional (bootstrap, núcleo mínimo, manual) |
+| v4.5 | memória semântica (SBERT) — planejado |
+
+---
+
+# PRINCÍPIOS
+
+Cada módulo:
+- responde uma única pergunta
+- possui escopo isolado
+- evita duplicação
+- reduz tokens
+
+---
+
+# OBJETIVO FINAL
+
+Preservar continuidade cognitiva entre sessões efêmeras de IA.
+Transformar experiência operacional em memória institucional reutilizável.
