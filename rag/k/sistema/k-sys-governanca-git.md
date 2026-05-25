@@ -1,5 +1,5 @@
 # k-sys-governanca-git
-versao: 1.0
+versao: 1.1
 
 ## OBJETIVO
 
@@ -39,7 +39,7 @@ Branches operacionais para execuções de ciclos.
 
 ```
 Propósito:   isolamento da execução de um ciclo específico
-Criado por:  Codex, antes de iniciar a execução
+Criado por:  agente_executor, antes de iniciar a execução
 Nomeação:    ops/[domínio-abreviado]-[YYYYMMDD]
 Ciclo:       vida curta — criado no início, deletado após merge
 ```
@@ -60,7 +60,7 @@ Branches para atualizações de módulos RAG.
 
 ```
 Propósito:   versionamento de atualizações na memória operacional
-Criado por:  Codex (ou Claude via instrução de atualização RAG)
+Criado por:  agente_executor (ou agente_orquestrador via instrução de atualização RAG)
 Nomeação:    rag/[módulo-abreviado]-[YYYYMMDD]
 Ciclo:       vida curta — criado, commitado, mergeado, deletado
 ```
@@ -78,7 +78,7 @@ Branches para documentação institucional.
 
 ```
 Propósito:   registros de marcos, fechamentos, relatórios
-Criado por:  Codex (a partir de instrução de Claude)
+Criado por:  agente_executor (a partir de instrução de agente_orquestrador)
 Nomeação:    docs/[marco-abreviado]-[YYYYMMDD]
 Ciclo:       vida curta
 ```
@@ -99,13 +99,11 @@ Usar o nome da tabela ou componente sem o schema prefix.
 
 | Domínio canônico | Abreviação em branch |
 |---|---|
-| public.audit_logs | audit-logs |
-| public.fornadas | fornadas |
-| public.pedidos | pedidos |
-| public.profiles | profiles |
-| public.tenants | tenants |
 | rag/r/r-rls-padrao | r-rls-padrao |
 | sistema C.A.O.S | sistema |
+| bootstrap | bootstrap |
+
+Exemplos genéricos — adaptar ao projeto.
 
 ### Data
 
@@ -122,12 +120,12 @@ Todo commit institucional deve seguir exatamente este formato:
 [tipo](domínio): descrição em imperativo, presente, sem ponto final
 
 snapshot: ID-do-snapshot
-agent-executor: Codex
-agent-orchestrator: Claude
+agent-executor: [agente_executor_id]
+agent-orchestrator: [agente_orquestrador_id]
 risks-addressed: N
 
-Co-Authored-By: Codex <noreply@codex>
-Orchestrated-By: Claude <noreply@claude>
+Co-Authored-By: agente_executor <noreply@agente>
+Orchestrated-By: agente_orquestrador <noreply@agente>
 ```
 
 ### Linha de título
@@ -158,8 +156,8 @@ Todos os campos são obrigatórios:
 | Campo | Obrigatório | Formato |
 |---|---|---|
 | `snapshot:` | sim | ID do snapshot que originou o ciclo |
-| `agent-executor:` | sim | Codex |
-| `agent-orchestrator:` | sim | Claude |
+| `agent-executor:` | sim | agente_executor |
+| `agent-orchestrator:` | sim | agente_orquestrador |
 | `risks-addressed:` | sim | número inteiro ≥ 0 |
 
 ### Trailers Git
@@ -167,8 +165,8 @@ Todos os campos são obrigatórios:
 Separados do corpo por uma linha em branco:
 
 ```
-Co-Authored-By: Codex <noreply@codex>
-Orchestrated-By: Claude <noreply@claude>
+Co-Authored-By: agente_executor <noreply@agente>
+Orchestrated-By: agente_orquestrador <noreply@agente>
 ```
 
 ---
@@ -208,8 +206,8 @@ Orchestrated-By: Claude <noreply@claude>
 ### Branch ops/ → main
 
 ```
-1. Codex cria commit na branch ops/
-2. Claude valida diff ↔ instrução autorizada (etapa 7b)
+1. agente_executor cria commit na branch ops/
+2. agente_orquestrador valida diff ↔ instrução autorizada (etapa 7b)
 3. Usuário autoriza merge [GATE]
 4. Merge executado (preferencialmente fast-forward ou merge commit explícito)
 5. Branch ops/ deletada
@@ -245,7 +243,7 @@ Regras de proteção de branch (configurar no repositório):
 
 Enquanto o repositório operar apenas localmente:
 a proteção é disciplinar — garantida pelo processo, não por ferramenta.
-Codex não deve criar commits em `main` diretamente.
+agente_executor não deve criar commits em `main` diretamente.
 
 ---
 
@@ -286,21 +284,17 @@ Exemplo de rastreabilidade completa:
 ```
 Handoff:
   ciclo_id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-  dominio: public.audit_logs
-  snapshot_ref: audit-logs-001
+  dominio: sistema
+  snapshot_ref: sistema-001
 
-Branch criada por Codex:
-  ops/audit-logs-20260509
+Branch criada por agente_executor:
+  ops/sistema-20260509
 
 Commit na branch:
-  [rls](public.audit_logs): substituir policy email_admin por get_tenant_id()
-  snapshot: audit-logs-001
-  agent-executor: Codex
-  agent-orchestrator: Claude
-
-Snapshot atualizado após merge:
-  audit-logs-001.commit_hash: abc123f7
-  audit-logs-001.branch: ops/audit-logs-20260509
+  [rag](sistema): atualizar módulo r-rls-padrao
+  snapshot: sistema-001
+  agent-executor: [agente_executor_id]
+  agent-orchestrator: [agente_orquestrador_id]
 ```
 
 Da branch, chega-se ao ciclo.

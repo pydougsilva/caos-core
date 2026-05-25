@@ -1,5 +1,5 @@
 # RAG Index — C.A.O.S Core
-versao: 4.0
+versao: 5.1
 
 ---
 
@@ -29,6 +29,7 @@ Etapa 2   → /k  (conhecimento)
 |---|---|
 | r-matching-conceito | matching heurístico (r-auto-recuperacao-contextual) |
 | r-handoff-codex | instrução textual informal |
+| r-handoff-executor | instrução textual informal (complementar a r-handoff-codex) |
 | r-estados-ciclo | sem rastreamento formal |
 | r-git-operacional | sem verificação de diff |
 
@@ -43,6 +44,9 @@ Etapa 2   → /k  (conhecimento)
 | Hotfix frontend | r/r-hotfix-padrao | k/frontend/[componente] | — |
 | Domínio com histórico | r/r-recuperacao-contextual | — | — |
 | Handoff estruturado | r/r-handoff-codex | k/sistema/k-sys-handoff-format | r/r-estados-ciclo |
+| Handoff estruturado (genérico) | r/r-handoff-executor | k/sistema/k-sys-handoff-format | r/r-estados-ciclo |
+| Restauracao de orquestrador | r/r-restauracao-orquestrador | r/r-estados-ciclo | r/r-telemetria-cognitiva |
+| Governanca de repositorios | k/sistema/k-sys-governanca-repositorios | — | — |
 | Retomada de ciclo | r/r-estados-ciclo | r/r-recuperacao-contextual | — |
 | Matching de domínio | r/r-matching-conceito | k/sistema/k-sys-registry-dominios | — |
 | Snapshot incremental | r/r-snapshots-incrementais | r/r-recuperacao-contextual | — |
@@ -53,6 +57,8 @@ Etapa 2   → /k  (conhecimento)
 | Entrada novo agente | k/sistema/k-sys-handoff-institucional | r/r-staleness-detection | r/r-telemetria-cognitiva |
 | Bootstrap projeto | k/projeto/k-bootstrap-caos | k/sistema/k-sys-nucleo-minimo | — |
 | Anti-burocracia | r/r-anti-burocracia | r/r-module-pruning | — |
+| Continuidade cognitiva | r/r-continuidade-cognitiva | r/r-telemetria-cognitiva | r/r-staleness-detection |
+| Contingência de executor | r/r-executor-contingencia | r/r-handoff-executor | r/r-handoff-codex |
 
 ---
 
@@ -65,7 +71,6 @@ Etapa 2   → /k  (conhecimento)
 | r-sql-idiomatico | 1.0 | regras para migrations SQL idempotentes |
 | r-rls-padrao | 1.0 | isolamento multi-tenant via RLS |
 | r-hotfix-padrao | 1.0 | patches cirúrgicos sem reescrever arquivo completo |
-| r-orquestracao-caos | v1.1 | comportamento do orquestrador Claude |
 | r-atualizacao-rag | v1.1 | quando e como evoluir o RAG |
 | r-recuperacao-contextual | 1.1 | snapshots históricos entre sessões |
 | r-auto-recuperacao-contextual | 1.0 | detecção automática de domínios |
@@ -80,8 +85,13 @@ Etapa 2   → /k  (conhecimento)
 | r-staleness-detection | 1.0 | detecção de artefatos desatualizados |
 | r-module-pruning | 1.0 | arquivamento e simplificação de módulos |
 | r-concurrency-guard | 1.0 | prevenção de colisão entre ciclos |
-| r-telemetria-cognitiva | 1.0 | registro mínimo de sessão |
+| r-telemetria-cognitiva | 1.2 | registro mínimo de sessão + métricas de continuidade |
 | r-anti-burocracia | 1.0 | limites contra hipercomplexidade |
+| r-continuidade-cognitiva | 1.0 | continuidade cognitiva entre sessões, agentes e projetos |
+| r-executor-contingencia | 1.0 | contingência de executor + taxonomia + modos operacionais |
+| r-orquestracao-caos | v1.4 | comportamento do orquestrador Claude + formato de saída |
+| r-restauracao-orquestrador | 1.0 | restauração do papel agente_orquestrador sem dependência nominal |
+| r-handoff-executor | 2.0 | protocolo handoff com papéis genéricos (complementar a r-handoff-codex) |
 
 ---
 
@@ -95,6 +105,7 @@ Etapa 2   → /k  (conhecimento)
 | k-sys-governanca-git | 1.0 | branches, commits e convenções |
 | k-sys-handoff-institucional | 1.0 | protocolo de entrada para novo agente |
 | k-sys-nucleo-minimo | 1.0 | núcleo mínimo replicável |
+| k-sys-governanca-repositorios | 1.0 | separação institucional produto ↔ caos-core |
 
 ---
 
@@ -103,6 +114,7 @@ Etapa 2   → /k  (conhecimento)
 | Arquivo | Versão | Finalidade |
 |---|---|---|
 | k-bootstrap-caos | 1.0 | guia de inicialização (3 perfis de projeto) |
+| k-proj-caos-metodo | 1.0 | metodologia C.A.O.S — componentes, fluxo, economia cognitiva |
 
 ---
 
@@ -115,6 +127,7 @@ Etapa 2   → /k  (conhecimento)
 | v3.5 | persistência verificável (Git) |
 | v3.9 | hardening (staleness, pruning, concurrency, telemetria) |
 | v4.0 | replicabilidade institucional (bootstrap, núcleo mínimo, manual) |
+| v5.0 | continuidade cognitiva + runtime session-bound + contingência de executor |
 | v4.5 | memória semântica (SBERT) — planejado |
 
 ---
