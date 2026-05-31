@@ -2,6 +2,26 @@
 
 ---
 
+## v5.0-completo — Hardening Legado caos-core (2026-05-31)
+
+**Marco:** v5.0 agora está integralmente commitado no caos-core.
+Artefatos produzidos em 2026-05-21 (hardening nominal em afetoeforma) e que permaneciam
+no working tree sem commit foram auditados, verificados e promovidos.
+
+Completado via ciclo-hardening-legado-caos-core-20260531:
+- AGENTS.md v4.0 → v5.0 (PRINCÍPIO DO ISOLAMENTO, CONTINUIDADE MÍNIMA, axioma session-bound)
+- r-orquestracao-caos v1.1 → v1.4 (FORMATO DE SAÍDA DA SESSÃO — 5 seções)
+- r-telemetria-cognitiva v1.0 → v1.2 (RISCOS ARQUITETURAIS, MÉTRICAS DE CONTINUIDADE)
+- r-continuidade-cognitiva v1.0 (novo — 4 contratos, níveis, protocolo de promoção)
+- r-executor-contingencia v1.0 (novo — 4 modos, taxonomia 3D, T-GEM.0)
+- Descontaminação nominal: r-matching-conceito, r-concurrency-guard, r-hotfix-padrao,
+  r-staleness-detection, r-auto-recuperacao-contextual, k-sys-handoff-institucional
+
+Estado pós-commit: caos-core com working tree limpo pela primeira vez.
+Modo operacional: nominal (Codex operante — saída do modo degradado após 5 ciclos).
+
+---
+
 ## v6.0-pre.3 — Decisão Final: Bootstrap Institucional Verificável (2026-05-31)
 
 **Marco:** revisão independente do Codex + decisão institucional convergente + auditoria
