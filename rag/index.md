@@ -1,5 +1,5 @@
 # RAG Index — C.A.O.S Core
-versao: 5.4
+versao: 5.5
 
 ---
 
@@ -63,6 +63,7 @@ Etapa 2   → /k  (conhecimento)
 | Proposta arquitetural v6.0 | k/sistema/k-sys-proposta-indexacao-relacional | k/sistema/k-sys-principios-fundamentais | — |
 | Princípios fundamentais | k/sistema/k-sys-principios-fundamentais | — | — |
 | Auditoria arquitetural | rag/docs/validacoes/A1.0-indiferenca-agente-auditoria | — | — |
+| Adapter Layer / Bootstrap Verificável | k/sistema/k-sys-adapter-layer | k/sistema/k-sys-principios-fundamentais | — |
 
 ---
 
@@ -113,6 +114,7 @@ Etapa 2   → /k  (conhecimento)
 | k-sys-lineage-arquitetural | 1.0 | cadeia causal completa da evolução do C.A.O.S (arqueologia institucional) |
 | k-sys-proposta-indexacao-relacional | 1.0 | proposta arquitetural v6.0 — indexação relacional institucional |
 | k-sys-principios-fundamentais | 1.0 | invariantes arquiteturais — restrições imutáveis de toda versão futura |
+| k-sys-adapter-layer | 1.0 | Adapter Layer — Bootstrap Institucional Verificável, context_receipt, adapters por ferramenta |
 
 ---
 
@@ -145,6 +147,7 @@ Etapa 2   → /k  (conhecimento)
 | v3.9 | hardening (staleness, pruning, concurrency, telemetria) |
 | v4.0 | replicabilidade institucional (bootstrap, núcleo mínimo, manual) |
 | v5.0 | continuidade cognitiva + runtime session-bound + contingência de executor |
+| v5.3 | Bootstrap Institucional Verificável — CLAUDE.md, .caos/adapters/, context_receipt |
 | v6.0 | indexação relacional institucional + grafo + SBERT offline — proposta formalizada |
 
 ---
