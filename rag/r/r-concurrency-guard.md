@@ -134,7 +134,7 @@ Ação quando lock stale detectado:
 ```
 rag/locks/
   public.audit_logs.lock.yml
-  public.fornadas.lock.yml
+  public.[dominio_a].lock.yml
   ...
 ```
 
@@ -156,14 +156,14 @@ Dois ciclos em domínios diferentes podem ocorrer simultaneamente.
 ```
 Exemplo válido:
   Ciclo A: public.audit_logs (estado: EXECUTANDO)
-  Ciclo B: public.fornadas (estado: PROPOSTO)
+  Ciclo B: public.[dominio_b] (estado: PROPOSTO)
   → Sem conflito. Domínios independentes.
 
 Exemplo de conflito potencial:
-  Ciclo A: public.pedidos (estado: EXECUTANDO)
-  Ciclo B: public.itens_pedido (estado: iniciando)
-  → Atenção: itens_pedido tem FK para pedidos.
-    Claude deve avaliar se a mudança em pedidos afeta itens_pedido.
+  Ciclo A: public.[dominio_a] (estado: EXECUTANDO)
+  Ciclo B: public.[entidade_relacionada] (estado: iniciando)
+  → Atenção: [entidade_relacionada] tem FK para [dominio_a].
+    Claude deve avaliar se a mudança em [dominio_a] afeta [entidade_relacionada].
 ```
 
 Quando domínios têm FK entre si, Claude avalia manualmente se há risco de conflito.

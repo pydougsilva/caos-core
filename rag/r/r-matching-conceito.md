@@ -115,8 +115,8 @@ que é exclusivo de um único domínio no registry.
 → Retornar esse domínio independente do segundo score.
 
 Alias exclusivo = alias que aparece na lista de apenas um domínio no registry.
-Termos como "fornadas" (peso 1.0) e "audit_logs" (peso 1.0) são exclusivos.
-Termos como "logs" (peso 0.8 em audit_logs) podem ser exclusivos se não
+Termos com peso 1.0 (nome exato da tabela) são geralmente exclusivos.
+Termos genéricos (peso 0.8 ou menor) podem ser exclusivos se não
 aparecerem em outros domínios com peso ≥ 0.5.
 
 **Regra C — Ratio de desambiguação:**
@@ -220,19 +220,20 @@ Após identificação do domínio:
 
 ### Exemplo 1 — Match único por alias exclusivo
 
-Prompt: "verificar políticas da fornada de sábado"
+Prompt: "verificar políticas de acesso no registro de auditoria"
 
-Termos candidatos: ["políticas", "fornada"]
+Termos candidatos: ["políticas", "auditoria", "registro"]
 
 Consulta registry:
 - "políticas" → sem match direto nos aliases (alias de nenhum domínio)
-- "fornada" → public.fornadas, peso 1.0 (exact)
+- "auditoria" → public.audit_logs, peso 0.8 (exact)
+- "registro"  → public.audit_logs, peso 0.5 (exact)
 
-Score(public.fornadas) = 1.0
+Score(public.audit_logs) = 1.3
 
 Aplicar regras:
-- Regra B: "fornada" peso 1.0 é alias exclusivo de public.fornadas
-→ Resultado ÚNICO: public.fornadas, confiança alta
+- Regra A: único domínio com score > 0
+→ Resultado ÚNICO: public.audit_logs, confiança alta
 
 ---
 
