@@ -1,5 +1,5 @@
 # RAG Index — C.A.O.S Core
-versao: 5.5
+versao: 5.6
 
 ---
 
@@ -64,6 +64,7 @@ Etapa 2   → /k  (conhecimento)
 | Princípios fundamentais | k/sistema/k-sys-principios-fundamentais | — | — |
 | Auditoria arquitetural | rag/docs/validacoes/A1.0-indiferenca-agente-auditoria | — | — |
 | Adapter Layer / Bootstrap Verificável | k/sistema/k-sys-adapter-layer | k/sistema/k-sys-principios-fundamentais | — |
+| Retomada de domínio (caminho mínimo) | rag/graph/resumption-index | rag/graph/artifact-map | — |
 
 ---
 
@@ -148,6 +149,7 @@ Etapa 2   → /k  (conhecimento)
 | v4.0 | replicabilidade institucional (bootstrap, núcleo mínimo, manual) |
 | v5.0 | continuidade cognitiva + runtime session-bound + contingência de executor |
 | v5.3 | Bootstrap Institucional Verificável — CLAUDE.md, .caos/adapters/, context_receipt |
+| v5.4 | Camada de Navegação Mínima — artifact-map + resumption-index por domínio |
 | v6.0 | indexação relacional institucional + grafo + SBERT offline — proposta formalizada |
 
 ---

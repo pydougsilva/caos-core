@@ -1,0 +1,26 @@
+# resumption-index — C.A.O.S Core (TEMPLATE)
+# versao: 1.0
+# tipo: grafo_navegacao / camada_derivada
+# fonte: derivado de telemetria operacional — não é source of truth primário
+# fallback: se entrada ausente → r-recuperacao-contextual + index.md (comportamento histórico)
+#
+# INSTRUÇÃO PARA ADOTANTE:
+# Preencha com os domínios do SEU projeto após os primeiros ciclos reais.
+# Cada entrada deve refletir o menor caminho que produziu retomada bem-sucedida.
+# Não criar entradas especulativas — apenas domínios com ciclos validados.
+
+dominios:
+
+  # Exemplo de entrada — substituir pelos domínios reais do projeto
+  - id: public.[tabela_principal]
+    familia: banco/operacional
+    ultimo_ciclo_validado: ciclo-[id]-YYYYMMDD
+    T_ret_minutos: null          # preencher após primeiro ciclo com retomada cronometrada
+    caminho_minimo:
+      - AGENTS.md
+      - rag/index.md
+      - r/r-[regra-principal]
+      - k/banco/k-[modulo-conhecimento]
+    snapshot_ref: [id-snapshot-ou-telemetria]
+    confianca: baixa             # baixa | média | alta
+    notas: "[contexto operacional relevante]"
