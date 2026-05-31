@@ -1,5 +1,5 @@
 # RAG Index — C.A.O.S Core
-versao: 5.1
+versao: 5.2
 
 ---
 
@@ -59,6 +59,9 @@ Etapa 2   → /k  (conhecimento)
 | Anti-burocracia | r/r-anti-burocracia | r/r-module-pruning | — |
 | Continuidade cognitiva | r/r-continuidade-cognitiva | r/r-telemetria-cognitiva | r/r-staleness-detection |
 | Contingência de executor | r/r-executor-contingencia | r/r-handoff-executor | r/r-handoff-codex |
+| Lineage arquitetural | k/sistema/k-sys-lineage-arquitetural | — | — |
+| Proposta arquitetural v6.0 | k/sistema/k-sys-proposta-indexacao-relacional | k/sistema/k-sys-principios-fundamentais | — |
+| Princípios fundamentais | k/sistema/k-sys-principios-fundamentais | — | — |
 
 ---
 
@@ -106,6 +109,9 @@ Etapa 2   → /k  (conhecimento)
 | k-sys-handoff-institucional | 1.0 | protocolo de entrada para novo agente |
 | k-sys-nucleo-minimo | 1.0 | núcleo mínimo replicável |
 | k-sys-governanca-repositorios | 1.0 | separação institucional produto ↔ caos-core |
+| k-sys-lineage-arquitetural | 1.0 | cadeia causal completa da evolução do C.A.O.S (arqueologia institucional) |
+| k-sys-proposta-indexacao-relacional | 1.0 | proposta arquitetural v6.0 — indexação relacional institucional |
+| k-sys-principios-fundamentais | 1.0 | invariantes arquiteturais — restrições imutáveis de toda versão futura |
 
 ---
 
@@ -128,7 +134,7 @@ Etapa 2   → /k  (conhecimento)
 | v3.9 | hardening (staleness, pruning, concurrency, telemetria) |
 | v4.0 | replicabilidade institucional (bootstrap, núcleo mínimo, manual) |
 | v5.0 | continuidade cognitiva + runtime session-bound + contingência de executor |
-| v4.5 | memória semântica (SBERT) — planejado |
+| v6.0 | indexação relacional institucional + grafo + SBERT offline — proposta formalizada |
 
 ---
 
