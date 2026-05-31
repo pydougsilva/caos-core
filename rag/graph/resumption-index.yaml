@@ -1,8 +1,14 @@
 # resumption-index — C.A.O.S Core (TEMPLATE)
 # versao: 1.0
 # tipo: grafo_navegacao / camada_derivada
-# fonte: derivado de telemetria operacional — não é source of truth primário
-# fallback: se entrada ausente → r-recuperacao-contextual + index.md (comportamento histórico)
+# fonte: derivado exclusivamente de ciclos que satisfaçam todos os critérios:
+#   - ciclo CONCLUÍDO (estado final CONCLUÍDO, não FALHOU)
+#   - merge realizado (branch ops/ mergeada para main)
+#   - gate humano cumprido (aprovação explícita registrada)
+#   - telemetria registrada (telemetria de sessão commitada)
+#   NÃO atualizar a partir de ciclos FALHOU, sessões sem merge ou retomadas parciais
+# regra_de_uso: consultar apenas na Etapa 0b — não substitui snapshot, telemetria ou handoff
+# fallback: se entrada ausente ou confianca < média → r-recuperacao-contextual + index.md
 #
 # INSTRUÇÃO PARA ADOTANTE:
 # Preencha com os domínios do SEU projeto após os primeiros ciclos reais.

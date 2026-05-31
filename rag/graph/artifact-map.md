@@ -79,8 +79,9 @@ Etapa 0a  Matching por conceito
 
 Etapa 0b  Consultar caminho mínimo [NOVO]
           rag/graph/resumption-index.yaml
-          → entrada existe: usar caminho_minimo diretamente → pular 0c
-          → entrada ausente: Etapa 0c (comportamento histórico)
+          → condição: entrada existe E confianca >= média E origem em ciclo CONCLUÍDO
+          → válido: usar caminho_minimo diretamente → pular Etapa 0c
+          → inválido ou ausente: Etapa 0c (comportamento histórico)
 
 Etapa 0c  Recuperar snapshot (se 0b não encontrou caminho)
           r-recuperacao-contextual
