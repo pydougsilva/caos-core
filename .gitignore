@@ -33,3 +33,6 @@ Thumbs.db
 
 # C.A.O.S — locks de sessão (estado efêmero, não institucional)
 rag/locks/
+
+# C.A.O.S — context_receipts de sessão (efêmeros, não rastrear)
+.caos/receipts/

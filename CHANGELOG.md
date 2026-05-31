@@ -2,6 +2,29 @@
 
 ---
 
+## v5.4 — Camada de Navegação Mínima (2026-05-31)
+
+**Marco:** grafo de navegação mínimo operacional — artifact-map + resumption-index.
+Grafo relacional completo (v6.0) adiado até corpus suficiente.
+
+Adicionado em caos-core:
+- rag/graph/artifact-map.md v1.0: mapa semântico das camadas C.A.O.S + fluxo de
+  retomada com Etapa 0b (consulta ao resumption-index antes de r-recuperacao-contextual)
+- rag/graph/resumption-index.yaml: template para adotantes — estrutura com placeholder
+
+Adicionado em afetoeforma (paralelo):
+- rag/graph/artifact-map.md: idem caos-core
+- rag/graph/resumption-index.yaml: 5 domínios reais com caminho mínimo validado
+  (frontend/App.jsx, public.pedidos, public.tenants, public.audit_logs, public.profiles)
+
+Atualizado em caos-core:
+- rag/index.md v5.5→v5.6: nova entrada TAREFA→MÓDULOS + linha evolutiva v5.4
+
+Decisão: grafo de navegação aprovado; grafo relacional completo (relations.yaml,
+frontmatter, SBERT) adiado para v6.0 quando corpus > 50 domínios/100 módulos.
+
+---
+
 ## v5.3 — Bootstrap Institucional Verificável (2026-05-31)
 
 **Marco:** Adapter Layer operacional em caos-core e afetoeforma.
