@@ -73,16 +73,16 @@ DEFINITIVAMENTE STALE quando:
 
 ### Tipo 3 — Staleness de Produto
 
-Indicadores de que o knowledge de produto pode não refletir o App.jsx atual:
+Indicadores de que o knowledge de produto pode não refletir o estado atual do frontend:
 
 ```
 SUSPEITO quando:
-  versão no cabeçalho do App.jsx ≠ versão em k-proj-identidade
-  (ex: "// AfetoEmForma v5.3" vs módulo v5.3 → coincide, mas precisa verificar se fase mudou)
+  versão no cabeçalho do arquivo principal ≠ versão em k-proj-identidade
+  (verificar se fase/sprint mudou desde a última atualização do módulo)
 
 SUSPEITO quando:
   k-proj-identidade lista "próximas entregas" que parecem já implementadas
-  (verificável lendo App.jsx ou migrações SQL)
+  (verificável lendo o código ou migrações SQL)
 
 SUSPEITO quando:
   módulo de frontend descreve comportamento que não corresponde
@@ -125,7 +125,7 @@ Reavaliação obrigatória (novo ciclo de análise antes de executar):
 - Policy RLS do domínio foi alterada fora do C.A.O.S
 - Migração SQL foi executada sem snapshot correspondente
 - Módulo /k principal do domínio está marcado como stale
-- Versão do App.jsx no cabeçalho diverge do k-proj-identidade
+- Versão do artefato de produto diverge do módulo k-proj-identidade do projeto
 
 ---
 

@@ -1,5 +1,5 @@
 # C.A.O.S — Infraestrutura Cognitiva Local
-versao: 4.0
+versao: 5.0
 
 ## IDENTIDADE
 
@@ -33,6 +33,34 @@ Arquitetura operacional:
 | Memória institucional | Snapshots | Histórico de decisões homologadas |
 | Evidência | Git commits | Prova verificável de execuções |
 | Governança | Usuário | Validação obrigatória antes de toda execução estrutural |
+
+---
+
+## PRINCÍPIO DO ISOLAMENTO OPERACIONAL POR SESSÃO
+
+O C.A.O.S é um runtime institucional distribuído e session-bound.
+
+O estado operacional existe EXCLUSIVAMENTE em:
+- artefatos explicitamente carregados na sessão ativa
+- contratos institucionais declarados na sessão ativa
+- snapshots e telemetria recuperados na sessão ativa
+
+Fora dos artefatos carregados:
+- O agente retorna ao comportamento genérico base
+- Nenhum estado operacional persiste implicitamente
+- Nenhum protocolo C.A.O.S existe "de memória"
+
+Axioma: agente sem artefatos = agente genérico.
+        agente + artefatos C.A.O.S = runtime institucional temporário.
+
+Implicações operacionais obrigatórias:
+- Carregar AGENTS.md é sempre obrigatório — nunca opcional
+- A continuidade institucional pertence aos artefatos, não ao modelo
+- Nenhum agente deve operar sob protocolo C.A.O.S sem ter carregado os artefatos
+
+Fundamentação: Lewis et al. (2020) — RAG.
+O C.A.O.S generaliza memória não-paramétrica para governança institucional:
+o modelo é o substrate genérico; os artefatos fornecem o protocolo e o estado.
 
 ---
 
@@ -101,6 +129,28 @@ Nunca:
 - improvisar arquitetura sem proposta explícita
 - executar sem instrução validada pelo usuário
 - aceitar handoff sem campo estado_atual: VALIDADO
+- transferir estado operacional C.A.O.S para pesos do modelo (fine-tuning institucional)
+- operar sob protocolo C.A.O.S sem ter carregado os artefatos explicitamente desta sessão
+
+---
+
+## CONTINUIDADE MÍNIMA
+
+Todo agente ao encerrar sessão deve verificar:
+
+```
+□ Operou em domínio com snapshots: []?
+  → SIM: criar snapshot base antes de encerrar.
+
+□ Executou ciclo operacional?
+  → SIM: registrar snapshot (base ou incremental) antes de encerrar.
+
+□ Gerou conhecimento operacionalmente relevante?
+  → SIM: externalizar em snapshot ou telemetria antes de encerrar.
+```
+
+Referência: r-continuidade-cognitiva (4 contratos).
+Violação = próxima sessão paga o custo.
 
 ---
 

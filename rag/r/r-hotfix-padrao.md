@@ -3,7 +3,7 @@ versao: 1.0
 
 ## OBJETIVO
 
-Gerar patches cirúrgicos no App.jsx sem gerar o arquivo completo.
+Gerar patches cirúrgicos em arquivos de aplicação sem gerar o arquivo completo.
 
 ---
 
@@ -40,7 +40,7 @@ Depois:
 
 ## PROIBIÇÕES
 
-- nunca gerar App.jsx completo sem solicitação explícita
+- nunca gerar o arquivo completo sem solicitação explícita
 - nunca alterar múltiplos fluxos em um único patch
 - nunca alterar CSS sem solicitação
 - nunca inventar trecho original
@@ -49,10 +49,7 @@ Depois:
 
 ## COMPATIBILIDADE
 
-Toda query Supabase deve respeitar:
+Em projetos multi-tenant com Supabase, toda query deve respeitar:
 - tenant_id
 - RLS
-- joins corretos
-
-Join obrigatório:
-profiles!user_id(nome, telefone)
+- joins corretos conforme schema do projeto

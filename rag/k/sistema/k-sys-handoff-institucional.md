@@ -69,7 +69,7 @@ Principais verificações de entrada:
   - versão em AGENTS.md vs versão esperada
   - versão em rag/index.md vs módulos existentes no filesystem
   - snapshot mais recente de cada domínio: data e estado
-  - k-proj-identidade: fase atual vs cabeçalho do App.jsx
+  - k-proj-identidade do projeto: fase atual vs artefato de produto principal
 ```
 
 ### Etapa 6 — Registrar telemetria de entrada

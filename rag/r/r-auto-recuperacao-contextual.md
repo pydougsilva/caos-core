@@ -79,8 +79,8 @@ Substring do domínio está presente no prompt.
 
 Exemplos:
 - "logs" → "public.audit_logs"
-- "fornada" → "public.fornadas"
-- "produto" → "public.produtos"
+- "[alias do domínio]" → "public.[domínio]"
+- "[termo de negócio]" → "public.[tabela correspondente]"
 
 Condição obrigatória:
 a substring deve corresponder a exatamente 1 domínio no registry de snapshots.

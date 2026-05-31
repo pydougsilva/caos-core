@@ -1,5 +1,5 @@
 # r-telemetria-cognitiva
-versao: 1.0
+versao: 1.2
 
 ## OBJETIVO
 
@@ -55,7 +55,10 @@ data: [YYYY-MM-DD]
 sessao_id: [identificador curto]
 agente: Claude | Codex | outro
 papel: orquestrador | executor | auditor | novo-agente
-versao_protocolo: 3.5
+versao_protocolo: "5.0"
+modo_operacao: nominal | fallback | degradado | suspenso
+executor_designado: [nome]
+executor_efetivo: [nome — pode ser diferente do designado]
 ---
 
 ## ARTEFATOS CONSULTADOS
@@ -87,6 +90,20 @@ versao_protocolo: 3.5
 | Domínio de negócio | Alta/Média/Baixa | [por quê] |
 | Estado atual do produto | Alta/Média/Baixa | [por quê] |
 | Estado C.A.O.S | Alta/Média/Baixa | [por quê] |
+
+## RISCOS ARQUITETURAIS ATIVOS
+
+Centraliza riscos identificados nesta sessão. Não deixar riscos apenas em "PRÓXIMA SESSÃO"
+ou "LIMITAÇÕES" — qualquer risco operacionalmente relevante deve aparecer aqui também.
+
+### Estruturais
+- [risco de arquitetura, schema, RLS, Auth + severidade: alta/média/baixa]
+
+### De Produto
+- [entrega pendente que é blocker real + impacto + domínio]
+
+### Operacionais
+- [gap de protocolo C.A.O.S, staleness, risco de processo + módulo relacionado]
 
 ## PROBLEMAS IDENTIFICADOS
 
@@ -126,6 +143,39 @@ versao_protocolo: 3.5
 
 ---
 
+## MÉTRICAS DE CONTINUIDADE (v5.0)
+
+A partir da Fase 5, incluir bloco de métricas ao final da telemetria:
+
+```yaml
+metricas_continuidade:
+  tempo_retomada_estimado_min: [número]
+  cobertura_snapshots_pct: [número]
+  dias_desde_ultima_telemetria: [número]
+  modulos_carregados_nesta_sessao: [lista]
+  dominios_sem_snapshot_operados: [lista]
+  snapshots_criados_na_sessao: [lista de IDs]
+  snapshots_historicos_ativos: [lista de IDs]
+  nivel_de_continuidade: Pleno | Completo | Estruturado | Basico
+  confianca_de_retomada: [ex: 85%]
+  contratos_violados: [lista ou vazio]
+  locks_verificados: vazio | [lista]
+  proxima_entrega_prioritaria: [entrega + domínio] | indefinida
+  fase_atual_produto: [Fase N (status)] | desconhecida
+```
+
+`fase_atual_produto`: preserva contexto do produto em sessões de auditoria/infra.
+`locks_verificados`: vazio = confirmação explícita de rag/locks/ limpo ao encerrar.
+`proxima_entrega_prioritaria`: retomada orientada sem inferência. Ausente → indefinida.
+
+Níveis (referência r-continuidade-cognitiva):
+- Pleno: todos os módulos + Git + snapshots
+- Completo: módulos v3.0+ + snapshots (sem verificação Git)
+- Estruturado: núcleo mínimo + snapshots (sem matching formal)
+- Básico: apenas AGENTS.md (sem continuidade formal)
+
+---
+
 ## CAMPOS OBRIGATÓRIOS
 
 Os seguintes campos são obrigatórios em toda telemetria:
@@ -135,7 +185,10 @@ Os seguintes campos são obrigatórios em toda telemetria:
 - `papel`
 - `ARTEFATOS CONSULTADOS` (pelo menos AGENTS.md e index.md)
 - `CONFIANÇA DA RECONSTRUÇÃO` (pelo menos domínio + estado produto)
+- `RISCOS ARQUITETURAIS ATIVOS` (mesmo que vazio por categoria — declarar explicitamente)
 - `MUDANÇAS PROPOSTAS NESTA SESSÃO`
+- `MÉTRICAS DE CONTINUIDADE` (a partir da Fase 5)
+  - inclui obrigatoriamente: `locks_verificados`, `proxima_entrega_prioritaria`, `fase_atual_produto`
 
 Os demais campos são incluídos quando relevantes.
 
@@ -155,8 +208,8 @@ Exemplos:
 "O schema_completo.sql usa is_admin() legado — não usar como referência.
  O schema atual no banco é multi-tenant conforme as migrations de Fase 2."
 
-"App.jsx tem duas versões do checkout: uma para móvel (linha ~800) e
- uma para desktop (linha ~1200). Sempre verificar ambas antes de hotfix."
+"O módulo k-proj-identidade lista 'próximas entregas' que parecem já implementadas.
+ Verificar App.jsx ou migrações SQL antes de usar o módulo como referência."
 ```
 
 ---
