@@ -2,6 +2,33 @@
 
 ---
 
+## v6.0-pre.3 — Decisão Final: Bootstrap Institucional Verificável (2026-05-31)
+
+**Marco:** revisão independente do Codex + decisão institucional convergente + auditoria
+de rastreabilidade que confirma integridade dos commits.
+
+Adicionado:
+- A1.1-codex-revisao-decisao-final.md: revisão Codex + decisão final + rastreabilidade
+  Novos conceitos institucionalizados: "Bootstrap Institucional Verificável" (rename de
+  "Indiferença de Agente") e context_receipt (recibo verificável de carregamento do protocolo)
+- index-validacoes.md: atualizado com entrada A1.1
+
+Decisão final:
+- INCORPORAÇÃO PARCIAL confirmada por auditoria dupla convergente
+- context_receipt adicionado ao roadmap (v5.4)
+- CLAUDE.md como adapter-ponteiro aprovado (v5.3)
+- orchestrate.sh: rejeitado para agora, aprovado para v7.0+
+- Nome "Indiferença de Agente" rejeitado
+
+Rastreabilidade confirmada:
+- 6 commits caos-core verificados (todos via branch ops/ + gate humano)
+- 2 telemetrias afetoeforma verificadas
+- Pendência crítica mapeada: ciclo-hardening-legado-caos-core (9+2 artefatos não commitados)
+
+Ciclos degradados: 4/5 — ALERTA operacional registrado.
+
+---
+
 ## v6.0-pre.2 — Auditoria Arquitetural: Indiferença de Agente (2026-05-28)
 
 **Marco:** auditoria institucional da proposta "C.A.O.S v6.0 — Indiferença de Agente /

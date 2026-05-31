@@ -25,7 +25,8 @@ Ao atingir 20: arquivar as mais antigas em rag/arquivo/ antes de adicionar novas
 
 | ID | Arquivo | Data | Tipo | Estado | Sumário |
 |---|---|---|---|---|---|
-| A1.0 | A1.0-indiferenca-agente-auditoria.md | 2026-05-28 | auditoria_arquitetural | concluida | Auditoria da proposta "Indiferença de Agente / Runtime Institucional" — veredicto: incorporação parcial com correções estruturais |
+| A1.0 | A1.0-indiferenca-agente-auditoria.md | 2026-05-28 | auditoria_arquitetural | concluida | Auditoria da proposta "Indiferença de Agente" — veredicto: incorporação parcial com correções estruturais. Achado crítico: .claude/instructions.md incorreto para Claude Code |
+| A1.1 | A1.1-codex-revisao-decisao-final.md | 2026-05-31 | revisao_independente + decisao_final | concluido | Revisão Codex + decisão final: INCORPORAÇÃO PARCIAL. Novo conceito: "Bootstrap Institucional Verificável" + context_receipt. Rastreabilidade: 6 commits verificados, pendência ciclo-hardening-legado-caos-core |
 | DNR | dependencia-nominal-residual.md | 2026-05-25 | auditoria | registrado | Auditoria de referências nominais pós-hardening v5.0 — confirma eliminação de dependências nominais em contratos ativos |
 
 ---
