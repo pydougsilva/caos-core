@@ -1,5 +1,5 @@
 # RAG Index — C.A.O.S Core
-versao: 5.2
+versao: 5.3
 
 ---
 
@@ -62,6 +62,7 @@ Etapa 2   → /k  (conhecimento)
 | Lineage arquitetural | k/sistema/k-sys-lineage-arquitetural | — | — |
 | Proposta arquitetural v6.0 | k/sistema/k-sys-proposta-indexacao-relacional | k/sistema/k-sys-principios-fundamentais | — |
 | Princípios fundamentais | k/sistema/k-sys-principios-fundamentais | — | — |
+| Auditoria arquitetural | rag/docs/validacoes/A1.0-indiferenca-agente-auditoria | — | — |
 
 ---
 
