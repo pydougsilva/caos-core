@@ -2,6 +2,27 @@
 
 ---
 
+## v6.0-pre.2 — Auditoria Arquitetural: Indiferença de Agente (2026-05-28)
+
+**Marco:** auditoria institucional da proposta "C.A.O.S v6.0 — Indiferença de Agente /
+Runtime Institucional" + criação do índice de validações do caos-core.
+
+Adicionado em rag/docs/validacoes/:
+- A1.0-indiferenca-agente-auditoria.md: auditoria completa (experimental + arquitetural)
+  com pacote para revisão independente do Codex. Veredicto: incorporação parcial.
+- index-validacoes.md v1.0: índice canônico de validações do caos-core.
+  Categorias: T0.x (bootstrap), T2.x (handoff), A1.x (arquitetural).
+
+Atualizado:
+- rag/index.md v5.2→v5.3: auditoria A1.0 indexada + nova entrada TAREFA→MÓDULOS
+
+Achado crítico da auditoria:
+- Claim "Claude Code carrega .claude/instructions.md" é INCORRETO: Claude Code lê CLAUDE.md
+- Violação confirmada de P14 (papéis sobre identidades) na proposta original
+- Veredicto: INCORPORAÇÃO PARCIAL com renomeação, correção de path e adapter como ponteiro
+
+---
+
 ## v6.0-pre — Sprint Documental: Indexação Relacional Institucional (2026-05-28)
 
 **Marco:** formalização institucional da proposta de indexação relacional — transição de
