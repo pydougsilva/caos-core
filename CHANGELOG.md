@@ -2,6 +2,32 @@
 
 ---
 
+## v5.3 — Bootstrap Institucional Verificável (2026-05-31)
+
+**Marco:** Adapter Layer operacional em caos-core e afetoeforma.
+Qualquer agente que lê CLAUDE.md é instruído a carregar AGENTS.md antes de operar.
+
+Adicionado em caos-core:
+- CLAUDE.md (raiz): adapter para Claude Code — ponteiro para AGENTS.md
+- .caos/adapters/claude.md: documentação do adapter Claude Code
+- .caos/adapters/codex.md: adapter + instrução para Codex CLI
+- rag/k/sistema/k-sys-adapter-layer.md (v1.0): documentação completa da Adapter Layer,
+  Bootstrap Institucional Verificável, context_receipt, como criar adapters
+
+Atualizado em caos-core:
+- rag/templates/telemetria-template.md: v3.9→v5.0, context_receipt, RISCOS
+  ARQUITETURAIS, MÉTRICAS DE CONTINUIDADE, DECLARAÇÃO DE MODO DEGRADADO
+- rag/index.md v5.4→v5.5: k-sys-adapter-layer indexado + linha evolutiva v5.3
+
+Adicionado em afetoeforma (paralelo):
+- CLAUDE.md, .caos/adapters/claude.md, .caos/adapters/codex.md
+- rag/templates/telemetria-template.md atualizado (mesmo conteúdo)
+
+Decisão de origem: A1.1-codex-revisao-decisao-final (2026-05-31)
+Princípio preservado: P14 — adapters são mecanismos técnicos, não dependências nominais.
+
+---
+
 ## v5.1 — Limpeza Institucional (2026-05-31)
 
 **Marco:** sistema institucional limpo. Todos os órfãos removidos/arquivados.
