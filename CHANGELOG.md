@@ -2,6 +2,35 @@
 
 ---
 
+## v5.1 — Limpeza Institucional (2026-05-31)
+
+**Marco:** sistema institucional limpo. Todos os órfãos removidos/arquivados.
+Todas as promoções planejadas para caos-core executadas.
+
+Promovido de afetoeforma para caos-core:
+- rag/docs/validacoes/T0.1-retomada-fria.md
+- rag/docs/validacoes/T0.1B-retomada-pos-ajustes.md
+- rag/docs/validacoes/T2.1-rejeicao-handoff-invalido.md
+- rag/docs/validacoes/T2.2-aceitacao-handoff-valido.md
+- rag/docs/validacoes/CONVENCOES.md
+- rag/docs/MANUAL-OPERACIONAL.md
+- rag/docs/DISTRIBUICAO-GITHUB.md
+
+Hardening nominal:
+- k-proj-caos-metodo.md v1.0→v1.1: CODEX/CLAUDE → agente_executor/agente_orquestrador
+
+Atualizado:
+- index-validacoes.md: 5 novas entradas T0.x/T2.x/CONV (promoções concluídas)
+- rag/index.md v5.3→v5.4: /docs seção + k-proj-caos-metodo v1.1
+
+Limpeza em afetoeforma (ciclo paralelo):
+- rag/r/hotfix-padrao.md: duplicata removida (sem prefixo r-)
+- k-proj-cooperacao-agentes.md: arquivado em rag/arquivo/k/
+- snapshot-v2.1-inicial.md: arquivado em rag/arquivo/snapshots/ (era vazio)
+- k-proj-identidade.md v5.4→v5.5: Sprint 5C 4→12/30, tabela C.A.O.S atualizada
+
+---
+
 ## v5.0-completo — Hardening Legado caos-core (2026-05-31)
 
 **Marco:** v5.0 agora está integralmente commitado no caos-core.

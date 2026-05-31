@@ -1,5 +1,5 @@
 # RAG Index — C.A.O.S Core
-versao: 5.3
+versao: 5.4
 
 ---
 
@@ -121,7 +121,17 @@ Etapa 2   → /k  (conhecimento)
 | Arquivo | Versão | Finalidade |
 |---|---|---|
 | k-bootstrap-caos | 1.0 | guia de inicialização (3 perfis de projeto) |
-| k-proj-caos-metodo | 1.0 | metodologia C.A.O.S — componentes, fluxo, economia cognitiva |
+| k-proj-caos-metodo | 1.1 | metodologia C.A.O.S — componentes, fluxo, economia cognitiva (papéis nominais) |
+
+---
+
+## /docs — Documentação Institucional
+
+| Arquivo | Versão | Finalidade |
+|---|---|---|
+| MANUAL-OPERACIONAL | 1.0 | manual para humanos e novos agentes — onboarding, fluxo, troubleshooting |
+| DISTRIBUICAO-GITHUB | 1.0 | política de distribuição via Git/GitHub, branches, tags, rollback |
+| PREPARACAO-CONTAINERIZACAO | 1.0 | contratos para containerização futura — não implementado |
 
 ---
 
