@@ -1,5 +1,5 @@
 # resumption-index — C.A.O.S Core (TEMPLATE)
-# versao: 1.0
+# versao: 2.0
 # tipo: grafo_navegacao / camada_derivada
 # fonte: derivado exclusivamente de ciclos que satisfaçam todos os critérios:
 #   - ciclo CONCLUÍDO (estado final CONCLUÍDO, não FALHOU)
@@ -10,23 +10,28 @@
 # regra_de_uso: consultar apenas na Etapa 0b — não substitui snapshot, telemetria ou handoff
 # fallback: se entrada ausente ou confianca < média → r-recuperacao-contextual + index.md
 #
+# MUDANÇA v2.0 (T5.2 — 2026-06-03):
+#   snapshot_ref renomeado para snapshot_minimo.
+#   snapshot_minimo é o 5º elemento do caminho operacional — não metadado de proveniência.
+#   Carregar obrigatoriamente junto com caminho_minimo na Etapa 0b.
+#   null = domínio sem telemetria diretamente localizável → fallback r-recuperacao-contextual.
+#
 # INSTRUÇÃO PARA ADOTANTE:
 # Preencha com os domínios do SEU projeto após os primeiros ciclos reais.
-# Cada entrada deve refletir o menor caminho que produziu retomada bem-sucedida.
-# Não criar entradas especulativas — apenas domínios com ciclos validados.
+# snapshot_minimo deve ser o path completo da telemetria mais recente do domínio.
 
 dominios:
 
-  # Exemplo de entrada — substituir pelos domínios reais do projeto
+  # Exemplo de entrada
   - id: public.[tabela_principal]
     familia: banco/operacional
     ultimo_ciclo_validado: ciclo-[id]-YYYYMMDD
-    T_ret_minutos: null          # preencher após primeiro ciclo com retomada cronometrada
+    T_ret_minutos: null
     caminho_minimo:
       - AGENTS.md
       - rag/index.md
       - r/r-[regra-principal]
       - k/banco/k-[modulo-conhecimento]
-    snapshot_ref: [id-snapshot-ou-telemetria]
-    confianca: baixa             # baixa | média | alta
+    snapshot_minimo: rag/docs/ciclos/telemetria/telemetria-[YYYYMMDD]-[id].md
+    confianca: baixa
     notas: "[contexto operacional relevante]"
